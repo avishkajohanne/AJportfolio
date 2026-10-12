@@ -88,10 +88,12 @@ function initTypewriter() {
     if (!target) return;
 
     const phrases = [
-        "Information Systems Security Specialist",
-        "pfSense Firewall & Ubuntu VMware Engineer",
-        "Creator of MyPay Final Capstone App",
-        "Ex-Union Bank Systems UAT Tester"
+        "Banking & IT Professional",
+        "Clearing Operations & Cheque Clearing Specialist",
+        "Customer Onboarding & Documentation Specialist",
+        "User Acceptance Testing (UAT - BDS, LIME, AS400)",
+        "BIT (Hons) in Information Systems Security",
+        "Cybersecurity, Networking & Firewall Fundamentals"
     ];
 
     let phraseIndex = 0;
@@ -172,9 +174,16 @@ function initNavbarScroll() {
         link.addEventListener('click', () => {
             if (navLinks.classList.contains('open')) {
                 navLinks.classList.remove('open');
-                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                if (mobileToggle) mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
             }
         });
+    });
+
+    document.addEventListener('click', (e) => {
+        if (navLinks && navLinks.classList.contains('open') && !navLinks.contains(e.target) && mobileToggle && !mobileToggle.contains(e.target)) {
+            navLinks.classList.remove('open');
+            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
     });
 }
 
